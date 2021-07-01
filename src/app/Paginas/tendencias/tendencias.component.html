@@ -1,0 +1,408 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-300-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+          <!-- breadcrumb title starts -->
+          <div class="d-inline-block">
+            <a class="alt-font font-weight-600 text-extra-large border-bottom-khaki text-black2 md-title-mdall sm-text-extra-large" href="index.html">Inicio</a>
+            <i class="fas fa-arrow-circle-right text-black2 text-extra-large margin-right-5px md-title-mdall margin-left-5px sm-text-extra-large"></i>
+          </div>
+          <!-- breadcrumb title ends -->
+          <!-- breadcrumb path starts -->
+          <div class="d-inline-block">
+            <h5 class="font-weight-600 text-extra-large text-sky-blue md-text-large sm-text-large">Tendencias</h5>
+          </div>
+          <!-- breadcrumb path ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+
+<section class="padding-80px-tb exproducts-style1">
+<!-- deal of the day section starts -->
+<div class="container">
+  <div class="row">
+    <!-- ex-products heading starts -->
+    <div class="col-lg-8 center-col text-center">
+      <h3 class="font-weight-800 main-font text-transform lg-title-medium md-title-medium sm-title-mdmore">EXPLORA NUESTROS PRODUCTOS MAS VISITADOS</h3>
+      <span class="md-text-large main-font font-weight-600 sm-text-large">Productos para comprar</span>
+    </div>
+  </div>
+
+</div>
+<!-- deal of the day section ends -->
+
+</section>
+
+
+
+<!-- grid product section starts -->
+<section class="exproducts-style1 grid-page">
+  <div class="container">
+    <div class="border-bottom-medium-dark2 margin-bottom-15px">
+      <div class="col-md-12">
+        <div class="row">
+          <p>
+            <button  class="btn btn-primary mr-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Ordenar Productos por
+              <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+          </p>
+          <div class="collapse pr-2" id="collapseExample">
+            <div class="btn-group mr-2" role="group" aria-label="Basic example">
+              <button type="button" (click)="priceMenor()" class="btn btn-secondary">Menor Precio</button>
+              <button type="button" (click)="priceMayor()" class="btn btn-secondary">Mayor Precio</button>
+              <button type="button" (click)="priceA()" class="btn btn-secondary">Nombre (A - Z)</button>
+              <button type="button" (click)="priceZ()" class="btn btn-secondary">Nombre (Z - A)</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- quick view starts -->
+    <div class="row">
+      <div class="col-lg-12 quick-view">
+        <div class="modal popup-bg" id="myModal">
+          <div class="modal-dialog1">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="font-weight-800 main-font text-transform md-title-medium lg-title-medium sm-title-mdmore">Vista Rapida</h3>
+                <button type="button" class="close outline-none" data-dismiss="modal">
+                <i class="fas fa-times-circle"></i>
+                </button>
+              </div>
+              <!-- modal body starts -->
+              <div class="modal-body1">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <img src="{{ Recursosquick }}" class="pruebasdeimgs border-radius-5" layout-fill>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                    <!-- product name starts -->
+                    <div class="produc-name-details margin-bottom-10px sm-margin-top-15px">
+                      <h6 class="d-inline-block title-small font-weight-600 lg-text-extra-large md-title-mdall sm-text-extra-large">{{ nombrequick }}</h6>
+                    </div>
+                    <!-- product name ends -->
+                    <!-- product price starts -->
+                    <div class="font-weight-600 text-large margin-bottom-10px md-text-large sm-text-large">{{pricequick | currency : 'USD' : 'symbol' : '1.0-0' }}
+                      <span *ngIf="banderaquick" class="text-decoration-line-through text-medium text-gray pl-2 md-text-medium sm-text-medium">{{pricetquick | currency : 'USD' : 'symbol' : '1.0-0' }}</span>
+                    </div>
+                    <!-- product price ends -->
+                    <!-- product availablity starts -->
+                    <div class="product-availablity margin-bottom-10px sm-text-large">
+                      <span class="display-inline-block font-weight-600">Cantidad: </span>
+                      <span class="display-inline-block font-weight-600 text-green"> {{ cantidadquick }}</span>
+                    </div>
+                    <!-- product availablity ends -->
+                    <!-- product colors availablity starts -->
+                    <div class="d-inline-block margin-bottom-10px sm-text-large">
+                      <span class="d-inline-block font-weight-600">Tags: <div class="text-green">{{ tagsquick }}</div></span>
+                    </div>
+                    <!-- product colors availablity ends -->
+                    <!-- product description starts -->
+                    <div class="product-description ">
+                      <p class="sm-text-large text-overflow">{{ descripcionquick }}</p>
+                    </div>
+                    <!-- product description ends -->
+                    <div class="d-inline-block">
+                      <div class="d-flex justify-content-center align-items-center">
+                        <!-- product qty starts -->
+                        <div class="display-inline-block">
+                          <div class="d-flex justify-content-center align-items-center">
+                            <span class="font-weight-600 sm-text-large">Cantidad</span>
+                          </div>
+                        </div>
+                        <div class="qty-input qty-input-style1 ml-2 d-inline-block">
+                          <i class="less title-medium">-</i>
+                          <input type="text" value="1"/>
+                          <i class="more title-medium">+</i>
+                        </div>
+                        <!-- product qty ends -->
+                        <!-- product add to cart starts -->
+                        <div class="d-inline-block">
+                          <a (click)="refresh(idmodal)"class="btn btn-outline-warning ml-2 hoverstyle5">
+                          <i class="fas fa-shopping-bag pr-2"></i>Ver Producto</a>
+                        </div>
+                        <!-- product add to cart ends -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- modal body ends -->
+              <div class="clearfix"></div>
+              <!-- Modal footer starts -->
+              <div class="modal-footer">
+                <button type="button" class="btn-style1" data-dismiss="modal">Cerrar</button>
+              </div>
+              <!-- Modal footer ends -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- quick view ends -->
+
+    <div class="row grid-pro-main">
+      <!-- product1 starts -->
+      <div class="col-xl-3 col-lg-3 col-md-4 col-6 grid-pro-info" *ngFor = "let product of getproducts  | paginate: { itemsPerPage: 8, currentPage: cp  }">
+        <div class="product-info">
+          <div class="content-overlay">
+            <!-- product1 image starts -->
+            <div class="product-img">
+              <div class="tab-content">
+                <div class="tab-pane active " id="pic-1">
+                  <a [routerLink]="['/Info', product.id]"><img src="{{ product.Recursos }}" alt="product-detail" class="img-home"></a>
+                </div>
+              </div>
+              <div *ngIf="product.bandera" >
+                <div [ngClass]=" product.banderaoffer  ? 'new-offer bg-green' :  'new-offer bg-light-red'">{{product.namebandera}}</div>
+              </div>
+            </div>
+
+
+
+            <!-- product1 image ends -->
+            <div class="content position-absolute opacity-none">
+              <!-- icons starts -->
+              <ul class="no-padding-left">
+                <li>
+                  <a href="#" class="text-fast-gray hoverstyle1 text-medium2 line-height-34 d-block" (click)="modal(product.id)" data-toggle="modal" data-target="#myModal"><i class="fas fa-eye"></i></a>
+                </li>
+              </ul>
+              <!-- icons ends -->
+            </div>
+          </div>
+        </div>
+        <div class="g-pro-detail">
+          <!-- product1 description starts -->
+          <div class="protext text-center">
+            <a  [routerLink]="['/Info', product.id]" class="d-inline-block text-dark-gray font-weight-600 hoverstyle1">{{ product.NombreProducto }}</a>
+            <p *ngIf="product.bandera" class="text-decoration-line-through  text-gray pricetext">{{product.pricet | currency : 'USD' : 'symbol' : '1.0-0' }} </p>
+            <h5 class="pricetext font-weight-600">{{ product.price | currency : 'USD' : 'symbol' : '1.0-0' }}</h5>
+
+          </div>
+          <!-- product1 description ends -->
+        </div>
+      </div>
+    </div>
+    <!-- product1 end -->
+
+    <div class="row pro-result">
+      <!-- Paginación -->
+      <div class="col-xl-6 col-lg-6 col-md-6 col-12 pagination-style">
+        <div class="clearfix">
+          <pagination-controls  class="my-pagination" (pageChange)="onPageChange ($event)" previousLabel = " Anterior "
+          nextLabel = " Siguiente " ></pagination-controls>
+        </div>
+      </div>
+      <!-- Paginación -->
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<div class="container">
+  <div class="row">
+    <!-- ex-products heading starts -->
+    <div class="col-lg-8 center-col margin-bottom-40px lg-margin-bottom-30px md-margin-bottom-25px sm-margin-bottom-20px text-center">
+    </div>
+</div>
+<!-- grid product section ends -->
+
+
+<section class="padding-80px-tb exproducts-style1">
+  <!-- deal of the day section starts -->
+  <div class="container">
+    <div class="row">
+      <!-- ex-products heading starts -->
+      <div class="col-lg-8 center-col text-center">
+        <h3 class="font-weight-800 main-font text-transform lg-title-medium md-title-medium sm-title-mdmore">EXPLORA NUESTROS PRODUCTOS MAS VENDIDOS</h3>
+        <span class="md-text-large main-font font-weight-600 sm-text-large">Productos para comprar</span>
+      </div>
+    </div>
+
+  </div>
+  <!-- deal of the day section ends -->
+
+  </section>
+
+
+
+
+  <!-- grid product section starts -->
+  <section class="exproducts-style1 grid-page">
+    <div class="container">
+      <div class="border-bottom-medium-dark2 margin-bottom-15px">
+        <div class="col-md-12">
+          <div class="row">
+            <p>
+              <button  class="btn btn-primary mr-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Ordenar Productos por
+                <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </p>
+            <div class="collapse pr-2" id="collapseExample">
+              <div class="btn-group mr-2" role="group" aria-label="Basic example">
+                <button type="button" (click)="priceMenor()" class="btn btn-secondary">Menor Precio</button>
+                <button type="button" (click)="priceMayor()" class="btn btn-secondary">Mayor Precio</button>
+                <button type="button" (click)="priceA()" class="btn btn-secondary">Nombre (A - Z)</button>
+                <button type="button" (click)="priceZ()" class="btn btn-secondary">Nombre (Z - A)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- quick view starts -->
+      <div class="row">
+        <div class="col-lg-12 quick-view">
+          <div class="modal popup-bg" id="myModal">
+            <div class="modal-dialog1">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="font-weight-800 main-font text-transform md-title-medium lg-title-medium sm-title-mdmore">Vista Rapida</h3>
+                  <button type="button" class="close outline-none" data-dismiss="modal">
+                  <i class="fas fa-times-circle"></i>
+                  </button>
+                </div>
+                <!-- modal body starts -->
+                <div class="modal-body1">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                      <img src="{{ Recursosquick }}" class="pruebasdeimgs border-radius-5" layout-fill>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                      <!-- product name starts -->
+                      <div class="produc-name-details margin-bottom-10px sm-margin-top-15px">
+                        <h6 class="d-inline-block title-small font-weight-600 lg-text-extra-large md-title-mdall sm-text-extra-large">{{ nombrequick }}</h6>
+                      </div>
+                      <!-- product name ends -->
+                      <!-- product price starts -->
+                      <div class="font-weight-600 text-large margin-bottom-10px md-text-large sm-text-large">{{pricequick | currency : 'USD' : 'symbol' : '1.0-0' }}
+                        <span *ngIf="banderaquick" class="text-decoration-line-through text-medium text-gray pl-2 md-text-medium sm-text-medium">{{pricetquick | currency : 'USD' : 'symbol' : '1.0-0' }}</span>
+                      </div>
+                      <!-- product price ends -->
+                      <!-- product availablity starts -->
+                      <div class="product-availablity margin-bottom-10px sm-text-large">
+                        <span class="display-inline-block font-weight-600">Cantidad: </span>
+                        <span class="display-inline-block font-weight-600 text-green"> {{ cantidadquick }}</span>
+                      </div>
+                      <!-- product availablity ends -->
+                      <!-- product colors availablity starts -->
+                      <div class="d-inline-block margin-bottom-10px sm-text-large">
+                        <span class="d-inline-block font-weight-600">Tags: <div class="text-green">{{ tagsquick }}</div></span>
+                      </div>
+                      <!-- product colors availablity ends -->
+                      <!-- product description starts -->
+                      <div class="product-description ">
+                        <p class="sm-text-large text-overflow">{{ descripcionquick }}</p>
+                      </div>
+                      <!-- product description ends -->
+                      <div class="d-inline-block">
+                        <div class="d-flex justify-content-center align-items-center">
+                          <!-- product qty starts -->
+                          <div class="display-inline-block">
+                            <div class="d-flex justify-content-center align-items-center">
+                              <span class="font-weight-600 sm-text-large">Cantidad</span>
+                            </div>
+                          </div>
+                          <div class="qty-input qty-input-style1 ml-2 d-inline-block">
+                            <i class="less title-medium">-</i>
+                            <input type="text" value="1"/>
+                            <i class="more title-medium">+</i>
+                          </div>
+                          <!-- product qty ends -->
+                          <!-- product add to cart starts -->
+                          <div class="d-inline-block">
+                            <a (click)="refresh(idmodal)"class="btn btn-outline-warning ml-2 hoverstyle5">
+                            <i class="fas fa-shopping-bag pr-2"></i>Ver Producto</a>
+                          </div>
+                          <!-- product add to cart ends -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- modal body ends -->
+                <div class="clearfix"></div>
+                <!-- Modal footer starts -->
+                <div class="modal-footer">
+                  <button type="button" class="btn-style1" data-dismiss="modal">Cerrar</button>
+                </div>
+                <!-- Modal footer ends -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- quick view ends -->
+
+      <div class="row grid-pro-main">
+        <!-- product1 starts -->
+        <div class="col-xl-3 col-lg-3 col-md-4 col-6 grid-pro-info" *ngFor = "let product of getproducts  | paginate: { itemsPerPage: 8, currentPage: cp  }">
+          <div class="product-info">
+            <div class="content-overlay">
+              <!-- product1 image starts -->
+              <div class="product-img">
+                <div class="tab-content">
+                  <div class="tab-pane active " id="pic-1">
+                    <a [routerLink]="['/Info', product.id]"><img src="{{ product.Recursos }}" alt="product-detail" class="img-home"></a>
+                  </div>
+                </div>
+                <div *ngIf="product.bandera" >
+                  <div [ngClass]=" product.banderaoffer  ? 'new-offer bg-green' :  'new-offer bg-light-red'">{{product.namebandera}}</div>
+                </div>
+              </div>
+
+
+
+              <!-- product1 image ends -->
+              <div class="content position-absolute opacity-none">
+                <!-- icons starts -->
+                <ul class="no-padding-left">
+                  <li>
+                    <a href="#" class="text-fast-gray hoverstyle1 text-medium2 line-height-34 d-block" (click)="modal(product.id)" data-toggle="modal" data-target="#myModal"><i class="fas fa-eye"></i></a>
+                  </li>
+                </ul>
+                <!-- icons ends -->
+              </div>
+            </div>
+          </div>
+          <div class="g-pro-detail">
+            <!-- product1 description starts -->
+            <div class="protext text-center">
+              <a  [routerLink]="['/Info', product.id]" class="d-inline-block text-dark-gray font-weight-600 hoverstyle1">{{ product.NombreProducto }}</a>
+              <p *ngIf="product.bandera" class="text-decoration-line-through  text-gray pricetext">{{product.pricet | currency : 'USD' : 'symbol' : '1.0-0' }} </p>
+              <h5 class="pricetext font-weight-600">{{ product.price | currency : 'USD' : 'symbol' : '1.0-0' }}</h5>
+
+            </div>
+            <!-- product1 description ends -->
+          </div>
+        </div>
+      </div>
+      <!-- product1 end -->
+
+      <div class="row pro-result">
+        <!-- Paginación -->
+        <div class="col-xl-6 col-lg-6 col-md-6 col-12 pagination-style">
+          <div class="clearfix">
+            <pagination-controls  class="my-pagination" (pageChange)="onPageChange ($event)" previousLabel = " Anterior "
+            nextLabel = " Siguiente " ></pagination-controls>
+          </div>
+        </div>
+        <!-- Paginación -->
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <div class="row">
+      <!-- ex-products heading starts -->
+      <div class="col-lg-8 center-col margin-bottom-40px lg-margin-bottom-30px md-margin-bottom-25px sm-margin-bottom-20px text-center">
+      </div>
+  </div>
+  <!-- grid product section ends -->

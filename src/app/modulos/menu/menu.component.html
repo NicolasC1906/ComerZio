@@ -1,0 +1,112 @@
+<!-- header section starts -->
+<div id="navbar" class="header-style1 position-absolute top-0 w-100 z-index-6 border-bottom-medium-dark">
+  <div class="navbar p-0 navbar-expand-lg navbar-dark">
+
+    <!-- navbar starts -->
+
+    <div class="col-xl-5 col-lg-6 col-md-1 col-sm-2 col-2">
+      <div class="text-center">
+        <div class="collapse navbar-collapse cursor-pointer toggle md-position-fixed md-left-0 md-container-fluid letter-spacing-half" id="collapsibleNavbar">
+          <ul class="navbar-nav md-bgcolor-black mx-auto">
+            <!-- navbar INICIO starts -->
+            <!-- <li class="md-border-bottom-medium-dark position-relative md-border-bottom-white padding-17px-tb padding-right-25px md-no-padding-tb lg-padding-right-20px md-textalign-left lg-text-medium md-container-fluid">
+              <a class="active md-padding-left-20px sm-text-large" id="navbarDropdownMenuLink" href="javascript:void(0)">Inicio</a>
+            </li> -->
+            <!-- navbar INICIO ends -->
+            <!-- FERIA starts -->
+            <!-- <li class="md-container-fluid position-relative md-border-bottom-white padding-right-25px lg-padding-right-20px padding-17px-tb md-no-padding-tb md-border-bottom-medium-dark md-textalign-left lg-text-medium">
+              <a class=" md-padding-left-20px sm-text-large" href="#">Feria</a>
+            </li> -->
+            <!-- FERIA ends -->
+            <!-- OFERTAS starts -->
+            <!-- <li class="dropdown md-container-fluid md-border-bottom-white padding-17px-tb md-no-padding-tb padding-right-25px lg-padding-right-20px md-textalign-left lg-text-medium">
+              <a href="#" class=" md-padding-left-20px sm-text-large">Ofertas</a>
+            </li> -->
+            <!-- OFERTAS ends -->
+            <!-- TENDENCIAS starts -->
+            <!-- <li class="dropdown padding-right-25px lg-padding-right-20px md-container-fluid md-border-bottom-white padding-17px-tb md-no-padding-tb md-textalign-left lg-text-medium">
+              <a class=" md-padding-left-20px sm-text-large" href="#" id="navbarDropdownMenuLink">Tendencias</a>
+            </li> -->
+            <!-- TENCENCIAS ends -->
+            <!-- TIENDAS starts -->
+            <!-- <li class="md-container-fluid md-border-bottom-white padding-17px-tb md-no-padding-tb padding-right-25px lg-padding-right-20px position-relative md-textalign-left lg-text-medium">
+              <a class=" md-padding-left-20px  sm-text-large" href="#">Tiendas</a>
+            </li> -->
+            <!-- TIENDAS ends -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- navbar End -->
+    <!-- logo starts -->
+
+    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 text-left">
+
+      <a class="navbar-brand mainlogo no-margin-right padding-10tb sm-padding-5px" href="index.html">
+        <img src="assets/images/LogoComerzio.png" alt="logo">
+      </a>
+    </div>
+    <!-- logo ends -->
+    <!-- navbar ends -->
+
+    <div  class="col-xl-5 col-lg-4 col-md-4 display-inline-block text-right md-display-none">
+      <!-- iniciar -->
+      <div *ngIf="iniciar" class="display-inline-block padding-right-10px">
+        <a  [routerLink] ="['/login']" class="wishlist text-transform-capitalize">
+          <i class="fas fa-user-check text-yellow margin-right-5px text-medium2"></i>
+          <span  class="font-weight-600">Iniciar Sesión</span>
+        </a>
+      </div>
+      <!-- iniciar ends -->
+      <!-- iniciar [routerLink] ="['/perfil', idUser]" -->
+      <div *ngIf="perfil" class="display-inline-block padding-right-10px">
+        <a   href="/perfil" class="wishlist text-transform-capitalize">
+          <i class="fas fa-user-check text-yellow margin-right-5px text-medium2"></i>
+          <span  class="font-weight-600">Hola, {{ nombre }} {{ apellido }}</span>
+        </a>
+      </div>
+      <!-- iniciar ends -->
+
+      <div class="sm-text-center display-inline-block padding-right-10px show-cart">
+        <!-- items starts -->
+        <!-- <a class="text-black new padding-top-20 padding-bottom-20px" href="/comingsoon">
+          <i class="fas fa-question-circle text-yellow position-relative margin-right-5px text-medium2"></i>
+          <span class="bagtext text-transform-capitalize font-weight-600">Ayuda</span>
+        </a> -->
+        <!-- items ends -->
+      </div>
+      <div class="display-inline-block padding-right-10px">
+        <a href="https://admincomerzio.com" class="wishlist text-transform-capitalize">
+          <i class="fas fa-store text-yellow margin-right-5px text-medium2"></i>
+          <span class="font-weight-600 ">Vendedor</span>
+        </a>
+      </div>
+
+      <!-- logoff starts -->
+      <div *ngIf="perfil"  class="display-inline-block padding-right-10px">
+        <a (click)="logout()" class="wishlist text-transform-capitalize">
+          <i class="fas fa-power-off text-red-comerzio margin-right-5px text-medium2" title="Cerrar sesíon"></i>
+          <!-- sign-out icon starts -->
+            <!-- <span class="font-weight-600 hoverstyle1">Cerrar sesíon</span> -->
+            <!-- sign-out icon ends -->
+        </a>
+      </div>
+      <!-- logoff ends -->
+
+    </div>
+  </div>
+
+
+  <nav>
+    <ul class="menu ">
+      <li><a class="wishlist text-transform-capitalize" href="#">Inicio</a></li>
+      <li *ngIf="showFeria"><a class="wishlist text-transform-capitalize"  [routerLink] ="['ferias']">Feria</a></li>
+      <li><a class="wishlist text-transform-capitalize"  [routerLink] ="['Ofertas']">Ofertas</a></li>
+      <li><a class="wishlist text-transform-capitalize"  [routerLink] ="['Tendencias']">Tendencias</a></li>
+      <li><a class="wishlist text-transform-capitalize"  [routerLink] ="['Tiendas']">Tiendas</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- header section ends -->

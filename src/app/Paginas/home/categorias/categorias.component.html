@@ -1,0 +1,125 @@
+<section class="padding-80px-tb exproducts-style1 border-top-medium-dark">
+  <div class="container">
+    <div class="row">
+      <!-- ex-products heading starts -->
+      <div class="col-lg-8 center-col margin-bottom-40px lg-margin-bottom-30px md-margin-bottom-25px sm-margin-bottom-20px text-center">
+        <h3 class="font-weight-800 main-font text-transform lg-title-medium md-title-medium sm-title-mdmore">EXPLORA NUESTRAS CATEGORÍAS</h3>
+        <span class="md-text-large main-font font-weight-600 sm-text-large">Categorías para comprar</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="blog-page">
+    <div class="container">
+
+      <div class="row">
+        <!-- blog1 starts -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-12 blog-con" *ngFor = "let categoria of getcategorias | paginate: { itemsPerPage: 5, currentPage: cp };">
+         <a [routerLink]="['/categoriasP']" (click)="getCategoria(categoria)"><div class="b-content">
+            <div class="position-relative blog-img">
+              <!-- blog1 image starts -->
+              <figure class="no-margin-bottom">
+               <a  [routerLink]="['/categoriasP']" (click)="getCategoria(categoria)"> <img src="{{ categoria.imagen }}" alt="ComerZio" class="imgCat" ></a>
+              </figure>
+              <!-- blog1 image ends -->
+            </div>
+            <!-- blog1 info starts -->
+            <div class="blog1">
+              <div class="clearfix"></div>
+              <!-- blog1 heading starts -->
+              <h6 class="b-title text-extra-large md-title-mdall sm-text-extra-large">
+                <a  [routerLink]="['/categoriasP']" (click)="getCategoria(categoria)" class="font-weight-600 text-black hoverstyle1"> {{ categoria.nombre }} </a>
+              </h6>
+            </div>
+            <!-- blog1 info ends -->
+          </div></a>
+        </div>
+        <!-- blog1 ends -->
+
+
+        <!-- blog1 starts -->
+        <div class="col-xl-4 col-lg-4 col-md-6 col-12 blog-con">
+          <a data-toggle="modal" href="#ModalCategorias"><div class="b-content">
+             <div class="position-relative blog-img">
+               <!-- blog1 image starts -->
+               <figure class="no-margin-bottom">
+                <a data-toggle="modal" href="#ModalCategorias"> <img src="assets/images/view-more.png" alt="ComerZio" class="imgCat" ></a>
+               </figure>
+               <!-- blog1 image ends -->
+             </div>
+             <!-- blog1 info starts -->
+             <div class="blog1">
+               <div class="clearfix"></div>
+               <!-- blog1 heading starts -->
+               <h6 class="b-title text-extra-large md-title-mdall sm-text-extra-large">
+                 <a class="font-weight-600 text-black hoverstyle1"> Ver Mas </a>
+               </h6>
+             </div>
+             <!-- blog1 info ends -->
+           </div></a>
+         </div>
+         <!-- blog1 ends -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- quick view starts -->
+<div class="row">
+  <div class="col-lg-12 quick-view">
+    <div class="modal popup-bg" id="ModalCategorias">
+      <div class="modal-dialog1">
+        <div class="modal-content  scrollCat">
+          <div class="modal-header">
+            <h3 class="font-weight-800 main-font text-transform md-title-medium lg-title-medium sm-title-mdmore">Categorias</h3>
+            <button type="button" class="close outline-none" data-dismiss="modal">
+            <i class="fas fa-times-circle"></i>
+            </button>
+          </div>
+
+
+          <!-- Contenido -->
+          <div class="blog-page ">
+            <div class="container">
+
+              <div class="row">
+
+                <!-- Categorias starts -->
+                <div class="col-xl-4 col-lg-4 col-md-6 col-12 blog-con" *ngFor = "let categoria of getcategorias">
+                 <a  (click)="getCategoria(categoria)"><div class="b-content">
+                    <div class="position-relative blog-img">
+                      <!-- blog1 image starts -->
+                      <figure class="no-margin-bottom">
+                       <a  (click)="getCategoria(categoria)"> <img src="{{ categoria.imagen }}" alt="ComerZio" class="imgCat" ></a>
+                      </figure>
+                      <!-- blog1 image ends -->
+                    </div>
+                    <!-- blog1 info starts -->
+                    <div class="blog1">
+                      <div class="clearfix"></div>
+                      <!-- blog1 heading starts -->
+                      <h6 class="b-title text-extra-large md-title-mdall sm-text-extra-large">
+                        <a  (click)="getCategoria(categoria)" class="font-weight-600 text-black hoverstyle1"> {{ categoria.nombre }} </a>
+                      </h6>
+                    </div>
+                    <!-- blog1 info ends -->
+                  </div></a>
+                </div>
+                <!-- Categorias ends -->
+              </div>
+            </div>
+          </div>
+          <!-- Contenido -->
+          <!-- Modal footer starts -->
+          <div class="modal-footer">
+            <!-- <button type="button" class="btn-style1" data-dismiss="modal">Cerrar</button> -->
+          </div>
+          <!-- Modal footer ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- quick view ends -->
+
+

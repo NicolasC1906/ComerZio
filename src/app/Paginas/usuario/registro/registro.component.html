@@ -1,0 +1,192 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-300-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+          <!-- breadcrumb title starts -->
+          <div class="d-inline-block">
+            <a class="alt-font font-weight-600 text-extra-large border-bottom-khaki text-black2 md-title-mdall sm-text-extra-large" href="index.html">Inicio</a>
+            <i class="fas fa-arrow-circle-right text-black2 text-extra-large margin-right-5px md-title-mdall margin-left-5px sm-text-extra-large"></i>
+          </div>
+          <!-- breadcrumb title ends -->
+          <!-- breadcrumb path starts -->
+          <div class="d-inline-block">
+            <h5 class="font-weight-600 text-extra-large text-sky-blue md-text-large sm-text-large">Registro de Usuario</h5>
+          </div>
+          <!-- breadcrumb path ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+
+<div class="login-container">
+
+              <form
+              (ngSubmit)="onSubmit(f)"
+                        #f="ngForm"
+              class="form-login row login_form needs-validation"
+              novalidate>
+
+              <ul class="login-nav">
+                <li class="login-nav__item hove">
+                  <a [routerLink] ="['/login']">Inicio de sesión</a>
+                </li>
+                <li class="login-nav__item active">
+                  <a [routerLink] ="['/registro']">Registro</a>
+                </li>
+              </ul>
+
+          <!-- nombre -->
+                <label
+                for="login-input-user"
+                class="login__label text-white">
+
+                </label>
+                <input
+                type="text"
+                class="login__input form-control"
+                placeholder="Nombre"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Nombre'"
+                [(ngModel)]="user.nombre"
+                name="nombre"
+                required
+                data-toggle="tooltip"
+                title="Ingresa Solo tu nombre"> <!-- input End -->
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- nombre -->
+
+          <!-- apellido -->
+                <label
+                for="login-input-user"
+                class="login__label text-white">
+                </label>
+                <input
+                type="text"
+                class="login__input form-control"
+                placeholder="apellidos"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'apellidos'"
+                [(ngModel)]="user.apellido"
+                name="apellido"
+                required
+                minlength="3"
+                data-toggle="tooltip"
+                title="Ingresa tus Apellidos"><!-- input End -->
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- apellido -->
+          <!-- Cedula -->
+                <label
+                for="login-input-user"
+                class="login__label text-white">
+                </label>
+                <input
+                type="numbers"
+                class="login__input form-control"
+                placeholder="Numero Cedula"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Numero Cedula'"
+                [(ngModel)]="user.dni"
+                name="dni"
+                required
+                minlength="5"
+                data-toggle="tooltip"
+                title="Ingresa tu numero de cedula"><!-- input End -->
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- cedula -->
+          <!-- Contacto -->
+                <label
+                for="login-input-user"
+                class="login__label text-white">
+                </label>
+                <input
+                type="numbers"
+                class="login__input form-control"
+                placeholder="Numero de contacto"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Numero de contacto'"
+                [(ngModel)]="user.telefono"
+                name="telefono"
+                required
+                minlength="6"
+                data-toggle="tooltip"
+                title="Ingresa numero de contacto"><!-- input End -->
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- Contacto -->
+          <!-- usuario -->
+                <label
+                for="login-input-user"
+                class="login__label text-white">
+                </label>
+                <input
+                type="mail"
+                class="login__input form-control"
+                placeholder="Correo"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Correo'"
+                [(ngModel)]="user.correo"
+                name="correo"
+                required
+                minlength="3"
+                data-toggle="tooltip"
+                title="Ingresa correo electronico">
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- usuario -->
+          <!-- Contraseña -->
+                <label
+                for="login-input-password"
+                class="login__label  text-white">
+                </label>
+                <input
+                type="password"
+                class="login__input form-control"
+                placeholder="Contraseña"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Contraseña'"
+                [(ngModel)]="user.contrasena"
+                name="contrasena"
+                required
+                minlength="4"
+                data-toggle="tooltip"
+                title="Ingresa contraseña">
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- Contraseña -->
+          <!-- Contraseña Confirma -->
+                <label
+                for="login-input-password"
+                class="login__label  text-white">
+                </label>
+                <input
+                type="password"
+                class="login__input form-control"
+                placeholder="Confirmar Contraseña"
+                onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Confirmar Contraseña'"
+                required
+                minlength="4"
+                data-toggle="tooltip"
+                title="Confirma Contraseña">
+                <div class="valid-feedback">Válido.</div>
+                <div class="invalid-feedback">Por favor rellene este campo.</div>
+          <!-- Contraseña Confirma -->
+
+                <button
+                type="submit"
+                class="login__submit "
+                >Registrarse
+                </button>
+              </form>
+
+  <a href="mailto:soporte@comerzio.co" class="login__forgot">¿Has olvidado tu contraseña?</a>
+  <div class="padding-bottom-50px"></div>
+</div>
+<div class="padding-30px-tb"></div>

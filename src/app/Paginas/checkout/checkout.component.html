@@ -1,0 +1,279 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-300-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+          <!-- breadcrumb title starts -->
+          <div class="d-inline-block">
+            <a class="alt-font font-weight-600 text-extra-large border-bottom-khaki text-black2 md-title-mdall sm-text-extra-large" href="index.html">Inicio</a>
+            <i class="fas fa-arrow-circle-right text-black2 text-extra-large margin-right-5px md-title-mdall margin-left-5px sm-text-extra-large"></i>
+          </div>
+          <!-- breadcrumb title ends -->
+          <!-- breadcrumb path starts -->
+          <div class="d-inline-block">
+            <h5 class="font-weight-600 text-extra-large text-sky-blue md-text-large sm-text-large">Checkout</h5>
+          </div>
+          <!-- breadcrumb path ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+<!-- checkout section starts -->
+<section class="padding-80px-tb check-out-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- review cart starts -->
+        <details open="" class="margin-bottom-10px">
+        <summary class="w-100 text-left text-black border-radius-5 border-gray2 padding-10px outline-none text-large sm-text-extra-large">Revisar Producto</summary>
+        <!-- heading starts -->
+        <div class="row margin-top-15px margin-left-10px margin-right-10px sm-display-none">
+          <div class="col-xl-6 col-lg-6 col-md-5 border-gray2 bg-white">
+            <div class="review-cart-title text-center">
+              <h6 class="text-medium font-weight-600">Nombre Producto</h6>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 border-gray2 border-left-none border-right-none bg-white">
+            <div class="review-cart-title text-center">
+              <h6 class="font-weight-600 text-medium">Precio</h6>
+            </div>
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-3 border-gray2 border-right-none bg-white">
+            <div class="review-cart-title text-center">
+              <h6 class="font-weight-600 text-medium">Cantidad</h6>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 border-gray2 bg-white">
+            <div class="review-cart-title text-center">
+              <h6 class="font-weight-600 text-medium">Total</h6>
+            </div>
+          </div>
+        </div>
+        <!-- heading ends -->
+        <!-- product details starts -->
+        <div *ngFor="let item of shoppingCart " class="row margin-left-10px margin-right-10px border-radius-5 sm-margin-top-15px">
+          <div class="col-xl-6 col-lg-6 col-md-5 bg-white border-gray2 border-top-none sm-border-gray2">
+            <div class="review-cart-title text-center">
+              <h6 class="d-none sm-display-block font-weight-600 sm-text-extra-large">Item Name</h6>
+              <p class="font-weight-600 m-0 sm-text-large">{{ item.NombreProducto }}</p>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 bg-white border-gray2 sm-border-gray2 border-top-none border-left-none border-right-none sm-border-top-none">
+            <div class="review-cart-title text-center">
+              <h6 class="d-none sm-display-block font-weight-600 sm-text-extra-large">Unit Price</h6>
+              <p *ngIf="precioalpormayor" class="m-0 sm-text-large">{{pricepormayor | currency : 'USD' : 'symbol' : '1.0-0' }}</p>
+              <p *ngIf="ocultarprice" class="m-0 sm-text-large">{{price | currency : 'USD' : 'symbol' : '1.0-0' }}</p>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-3 bg-white border-gray2 sm-border-gray2 border-top-none border-right-none sm-border-top-none">
+            <div class="py-1 text-center">
+              <h6 class="d-none sm-display-block font-weight-600 sm-text-extra-large">Quantity</h6>
+              <div class="qty-input qty-input-style1 d-inline-block top-3 sm-text-large">
+                <i (click)="decrementar()" class="less title-medium">  - </i>
+              <input
+                id="item"
+                 type="number"
+                 min="1"
+                 type="text"
+                 max="{{ item.cantidad }}"
+                 value="{{item.unit}}"
+                 disabled
+                 >
+                 <i (click)="incrementar()" class="more title-medium">+</i>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-2 bg-white border-gray2 sm-border-gray2 border-top-none sm-border-top-none">
+            <div class="review-cart-title text-center sm-text-extra-large">
+              <h6 class="d-none sm-display-block text-large font-weight-600 sm-text-extra-large">Total</h6>
+              <p class="font-weight-600 m-0">{{ preciototal | currency : 'USD' : 'symbol' : '1.0-0' }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- product details ends -->
+        <div class="clearfix"></div>
+        </details>
+        <!-- review cart ends -->
+        <div class="separator-border"></div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div *ngIf="mostrarmayor"  class="alert fade alert-simple alert-info alert-dismissible text-left font__family-montserrat font__size-16 font__weight-light brk-library-rendered rendered show" role="alert" data-brk-library="component__alert">
+              <button type="button" class="close font__size-18" data-dismiss="alert">
+                      <span aria-hidden="true">
+                        <i class="fa fa-times blue-cross"></i>
+                      </span>
+                      <span class="sr-only">Close</span>
+                    </button>
+              <i class="start-icon  fa fa-info-circle faa-shake animated"></i>
+              <strong  class="">Recuerda!</strong> Es producto se vende al por mayor, si llevas desde <strong>12</strong> unidades cada unidad te costaria: <strong>{{ pricepormayor | currency : 'USD' : 'symbol' : '1.0-0' }}</strong>
+            </div>
+          </div>
+        </div>
+        <!-- billing information starts -->
+        <details class="margin-bottom-10px">
+        <summary class="w-100 text-left text-black border-radius-5 border-gray2 padding-10px outline-none text-large sm-text-extra-large">Información De Pago</summary>
+        <!-- form starts -->
+        <form
+        [formGroup]="form"
+        class="form-action"
+
+        >
+          <!-- customer information starts -->
+          <div class="row margin-top-15px margin-left-0px margin-right-0px">
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large">
+              Nombre<span class="text-danger">*</span></label>
+              <input
+              type="text"
+              name="nombre"
+              value="{{ user.nombre }}" 
+              readonly
+              class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large">
+              Apellido<span class="text-danger">*</span></label>
+              <input
+              type="text"
+              name="apellido"
+              value="{{ user.apellido }}"
+              readonly
+              class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-15px">
+              <label
+              class="sm-text-large">
+              Cedula<span class="text-danger">*</span></label>
+              <input
+              type="number"
+              formControlName="dni"
+              name="id"
+              value="{{ cedula }}"
+
+              number required
+              class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large"
+              >Celular<span class="text-danger">*</span>
+            </label>
+              <input
+              type="number"
+              name="Celular"
+              placeholder="Celular"
+              formControlName="telefono"
+              value="{{ user.telefono }}"
+              required
+              class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+            <div class="col-md-6 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large"
+              >Correo<span class="text-danger">*</span>
+            </label>
+              <input
+              type="mail"
+              name="correo"
+              placeholder="Correo"
+              value="{{ user.correo }}"
+              email readonly
+              required
+              class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large">
+              Dirección<span class="text-danger">*</span></label>
+              <input
+              type="text"
+              name="dirección"
+              formControlName="add1"
+              value="{{ direccion }}"
+              required
+              placeholder="Dirección" class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+                class="sm-text-large">Departamento<span class="text-danger">*</span></label>
+                <select
+                name="Country"
+                class="text-extra-medium sm-text-medium form-control border-radius-5"
+                (change)="onchangedepa($event)"
+                >
+                <option value="item"
+                  >
+                Seleccione departamento</option>
+                  <option value="{{item.id}}"
+                  *ngFor="let item of getDepartamentos"
+                  >
+                  {{ item.NombreProducto }}
+                </option>
+                </select>
+            </div>
+
+            <div *ngIf="mostraropciondeciudad"  class="col-md-4 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large">Ciudad<span class="text-danger">*</span></label>
+            <select name="Country" formControlName="city" class="text-extra-medium sm-text-medium form-control border-radius-5">
+              <option value="{{item.id}}" *ngFor="let item of getCiudades">{{ item.NombreProducto }}</option>
+            </select>
+          </div>
+
+            <div class="col-md-4 padding-left-10px padding-right-10px margin-bottom-15px">
+              <label
+              class="sm-text-large">
+              Codigo Postal</label>
+              <input
+              type="text"
+              name="pin"
+              formControlName="zip"
+              placeholder="Codigo Postal" class="text-extra-medium sm-text-medium form-control border-radius-5">
+            </div>
+            <div class="col-md-10 padding-left-10px padding-right-10px margin-bottom-10px">
+              <label
+              class="sm-text-large">
+              Indicaciones</label>
+              <textarea class="text-extra-medium sm-text-medium form-control border-radius-5"
+              name="message"
+              id="message"
+              rows="5"
+              placeholder="Casa / Apartamento / Piso"
+              formControlName="message">
+              required
+              </textarea></div>
+
+          </div>
+          <!-- customer information ends -->
+        </form>
+        <form  [formGroup]="form" (ngSubmit)="save($event)">
+          <div>
+            <button class="btn btn-primary margin-right-5px" type="submit" value="submit">Comprar</button>
+            <button [routerLink]="['/comingsoon']" class="btn btn-danger">Cancelar</button>
+          </div>
+        </form>
+        <!-- form ends -->
+        </details>
+        <!-- billing information ends -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- checkout section ends -->

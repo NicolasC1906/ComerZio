@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SocialStory.js</title>
+    <link rel="stylesheet" href="socialstory.css">
+    <script type="text/javascript" src="socialstory.js"></script>
+  </head>
+  <body>
+
+      <div id="storytime"></div>
+
+      <script>
+		var myPlaylist = [
+		{
+			"title": "Social Story",
+			"date": "2 hours ago",
+			"url": "http://thenewcode.com/assets/videos/glacier.mp4",
+			"icon": "small-icon.jpg"
+		},
+		{
+			"title": "Social Story",
+			"date": "1 day ago",
+			"url": "http://thenewcode.com/assets/videos/glacier.mp4",
+			"icon": "small-icon.jpg"
+		},
+		{
+			"title": "Social Story",
+			"date": "1 day ago",
+			"url": "http://thenewcode.com/assets/videos/glacier.mp4",
+			"icon": "small-icon.jpg"
+		}
+		];
+
+		var socialStory = new Story({
+			playlist: myPlaylist
+		});
+
+	  </script>
+  </body>
+
+  <div class="stories">
+	<div class="head">
+	   <h4>Stories</h4>
+	   <a  onclick="socialStory.launch();">See All</a>
+	</div>
+	<ul>
+	   <li>
+		  <a  onclick="socialStory.launch();">
+			 <div class="stories-card">
+				<div style="background-image:url(https://i.resimyukle.xyz/654Hfz.jpg)" class="stories-img"></div>
+				<div class="add-storie">
+				   <div style="background-image:url(https://i.resimyukle.xyz/MQx05a.jpg)" class="avatar"></div>
+				</div>
+				<div class="stories-by">
+				   <h5>Oğulcan Özügenç</h5>
+				</div>
+			 </div>
+		  </a>
+	   </li>
+	   <li>
+		  <a  onclick="socialStory.launch();">
+			 <div class="stories-card">
+				<div style="background-image:url(https://i.resimyukle.xyz/BJL33M.jpg)" class="stories-img"></div>
+				<div class="add-storie">
+				   <div style="background-image:url(https://i.resimyukle.xyz/yG40bH.jpg)" class="avatar"></div>
+				</div>
+				<div class="stories-by">
+				   <h5>Doğantekin Furkan</h5>
+				</div>
+			 </div>
+		  </a>
+	   </li>
+	</ul>
+ </div>
+
+
+</html>

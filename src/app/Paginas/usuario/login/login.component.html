@@ -1,0 +1,126 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-300-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+          <!-- breadcrumb title starts -->
+          <div class="d-inline-block">
+            <a class="alt-font font-weight-600 text-extra-large border-bottom-khaki text-black2 md-title-mdall sm-text-extra-large" href="index.html">Inicio</a>
+            <i class="fas fa-arrow-circle-right text-black2 text-extra-large margin-right-5px md-title-mdall margin-left-5px sm-text-extra-large"></i>
+          </div>
+          <!-- breadcrumb title ends -->
+          <!-- breadcrumb path starts -->
+          <div class="d-inline-block">
+            <h5 class="font-weight-600 text-extra-large text-sky-blue md-text-large sm-text-large">Inicio de sesión</h5>
+          </div>
+          <!-- breadcrumb path ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+
+<div class="login-container">
+
+
+              <form (ngSubmit)="login()" [formGroup]="loginUser"
+              class="form-login needs-validation"
+              >
+              <ul class="login-nav">
+                <li class="login-nav__item active">
+                  <a [routerLink] ="['/login']">Inicio de sesión</a>
+                </li>
+                <li class="login-nav__item hove">
+                  <a [routerLink] ="['/registro']">Registro</a>
+                </li>
+              </ul>
+            <!-- usuario -->
+                <label
+                for="login-input-user"
+                class="login__label">
+                </label>
+
+                <input
+                type="text"
+                class="login__input form-control"
+                placeholder="Correo Electronico"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Correo Electronico'"
+                formControlName="email"
+                                name="correo"
+                                required
+                                minlength="3"
+                                data-toggle="tooltip">
+                                <div class="valid-feedback">Válido.</div>
+                                <div class="invalid-feedback">Por favor rellene este campo.</div>
+            <!-- usuario -->
+            <!-- Contraseña -->
+                <label
+                for="login-input-password"
+                class="login__label">
+                </label>
+
+                <input
+                type="password"
+                class="login__input form-control"
+                placeholder="Contraseña"
+								onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Contraseña'"
+                formControlName="password"
+                                name="contrasena"
+                                required
+                                minlength="4"
+                                data-toggle="tooltip"/>
+                                <div class="valid-feedback">Válido.</div>
+                                <div class="invalid-feedback">Por favor rellene este campo.</div>
+            <!-- Contraseña -->
+                <button
+                value="submit"
+                type="submit"
+                class="login__submit"
+                >Iniciar sesión
+                </button>
+
+                <div class="form-choice form-line">
+                  <p class=" text-white">O inicia sesión con</p>
+                  <div class="d-inline-block">
+                      <a (click)="googleSignin  ()" class="btn btn-g-f text-white">
+                          <i class="fab fa-google text-google"></i>
+                          Iniciar con Google
+                      </a>
+                  </div>
+                  <div class="d-inline-block">
+                      <a (click)="signInWithFB()" class="btn btn-g-f text-white">
+                          <i class="fab fa-facebook-f text-Facebook"></i>
+                          Iniciar con Facebook
+                      </a>
+                  </div>
+
+                  <!-- <div class="d-inline-block">
+                    <a (click)="signOut()" class="btn btn-g-f text-white">
+                        <i class="fab fa-facebook-f text-Facebook"></i>
+                        Cerrar sesión
+                    </a>
+                </div> -->
+
+              </div>
+
+  </form>
+
+
+  <a href="mailto:soporte@comerzio.co" class="login__forgot">¿Has olvidado tu contraseña?</a>
+  <div class="padding-bottom-50px"></div>
+</div>
+<div class="padding-30px-tb"></div>
+
+<!-- <h1>Prueba de Datos</h1>
+<Div class="col-md-6" *ngIf="user">
+  <img src="{{ user.photoUrl }}">
+  <div>
+    <h4>{{ user.name }}</h4>
+    <p>{{ user.email }}</p>
+  </div>
+</Div> -->
+

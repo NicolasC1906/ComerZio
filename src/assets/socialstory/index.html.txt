@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>SocialStory.js</title>
+    <link rel="stylesheet" href="socialstory/socialstory.css">
+    <script type="text/javascript" src="socialstory/socialstory.js"></script>
+  </head>
+  <body>
+      <button type="button" onclick="socialStory.launch();">Launch Social Story</button>
+
+      <div id="storytime"></div>
+
+      <script>
+		var myPlaylist = [
+		{
+			"title": "Social Story",
+			"date": "2 hours ago",
+			"url": "media/IMG_4627.mov",
+			"icon": "media/small-icon.jpg"
+		},
+		{
+			"title": "Social Story",
+			"date": "1 day ago",
+			"url": "media/IMG_4628.mov",
+			"icon": "media/small-icon.jpg"
+		},
+		{
+			"title": "Social Story",
+			"date": "1 day ago",
+			"url": "media/IMG_4629.mov",
+			"icon": "media/small-icon.jpg"
+		}
+		];
+
+		var socialStory = new Story({
+			playlist: myPlaylist
+		});
+
+	  </script>
+  </body>
+</html>

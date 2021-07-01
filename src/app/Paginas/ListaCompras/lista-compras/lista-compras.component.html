@@ -1,0 +1,119 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-300-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+          <!-- breadcrumb title starts -->
+          <div class="d-inline-block">
+            <a class="alt-font font-weight-600 text-extra-large border-bottom-khaki text-black2 md-title-mdall sm-text-extra-large" href="index.html">Inicio</a>
+            <i class="fas fa-arrow-circle-right text-black2 text-extra-large margin-right-5px md-title-mdall margin-left-5px sm-text-extra-large"></i>
+          </div>
+          <!-- breadcrumb title ends -->
+          <!-- breadcrumb path starts -->
+          <div class="d-inline-block">
+            <h5 class="font-weight-600 text-extra-large text-sky-blue md-text-large sm-text-large">Lista de Compras</h5>
+          </div>
+          <!-- breadcrumb path ends -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+<!-- product details page starts -->
+
+<section class="padding-80px-tb  wishlist-page">
+  <h1 class=" text-center padding-20px-tb text-black-ni">Sección en construcción</h1>
+  <h4 class=" text-center padding-20px-tb text-blue-tags">Disponible en su totalidad proximamente</h4>
+  <div *ngFor=" let item of shoppingCart let i= index" class="container">
+    <h6 class=" text-blue" >Tienda: {{ item[0].product.NombreTienda}}</h6>
+    <div class="row sm-margin-left-right-0px">
+      <!--product table starts  -->
+      <div class="table-responsive">
+        <table class="table table-bordered no-margin-bottom">
+          <thead>
+            <!-- heading starts -->
+            <tr class="text-center">
+              <th>Nombre Producto</th>
+              <th>Precio</th>
+              <th>Valor</th>
+              <th>Sub Total</th>
+              <th>Borrar Item</th>
+            </tr>
+            <!-- heading ends -->
+          </thead>
+          <tbody>
+            <tr *ngFor=" let items of item let i= index" class="text-center">
+              <td>
+                <!-- buy product image starts -->
+                <a ><img src="#" alt=""></a>
+                <!-- buy product image ends -->
+                <!-- buy product description starts -->
+                <div class="added-product">
+                  <p class="text-black font-weight-600 sm-text-large">{{ items.product.NombreProducto}}</p>
+                </div>
+                <!-- buy product description ends -->
+              </td>
+              <!-- product price starts -->
+              <td class="vertical-align-middle sm-text-large">{{ items.product.price | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+              <!-- product price ends -->
+              <!-- qty starts -->
+              <td class="vertical-align-middle">
+                <div class="qty-input qty-input-style1 d-inline-block">
+                  <i class="less title-small">-</i>
+                  <input type="text" value="1">
+                  <i class="more title-small">+</i>
+                </div>
+              </td>
+              <!-- qty ends -->
+              <!-- product sub total starts -->
+              <td class="vertical-align-middle font-weight-600 sm-text-large">$58,988.00</td>
+              <!-- product sub total ends -->
+              <!-- action starts -->
+              <td class="vertical-align-middle">
+                <!-- trash icon starts -->
+                <div class="delet-icon">
+                  <i class="fas fa-times hoverstyle1"></i>
+                </div>
+                <!-- trash icon ends -->
+              </td>
+              <!-- action ends -->
+            </tr>
+
+          </tbody>
+
+        </table>
+        <div class="float-right font-weight-600 text-large sm-text-extra-large">Total Compra: <Strong class="text-black border-bottom-khaki margin-right-10px">$52,780.00</Strong></div><br>
+
+        <div class="container margin-bottom-30px margin-top-30px">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-12 p-0">
+              <div class="text-left sm-text-center sm-margin-bottom-10px">
+                <a href="index.html" class="btn btn-style1"><i class="fas fa-arrow-alt-circle-left"></i> Continuar Comprando</a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 p-0 sm-margin-top-15px d-flex sm-justify-content-center">
+              <div class="d-inline-block">
+                <!-- <input type="text" name="coupon" class="text-medium sm-margin-bottom-10px form-control border-radius-5" placeholder="Enter your coupon"> -->
+              </div>
+              <div class="d-inline-block margin-left-5px">
+                <!-- <button class="btn btn-style1 z-index-7">Coupon</button> -->
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-12 p-0 sm-margin-top-15px">
+              <div class="text-right sm-text-center">
+                <button class="btn-style1"><i class="fas fa-shopping-bag pr-2"></i>Pagar en {{ item[0].product.NombreTienda}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--product table ends  -->
+    </div>
+  </div>
+
+
+
+</section>
+<!-- product details page ends -->

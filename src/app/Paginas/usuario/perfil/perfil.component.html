@@ -1,0 +1,693 @@
+<!-- breadcrumbs section starts -->
+<section class="blog-detailsstyle1 breadcrumb-img position-relative cover-background height-100-px" style="background-image: url('assets/images/SLIDER5.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumb-text text-center left-0 right-0">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumbs section ends -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="d-flex justify-content-center sm-text-center">
+        <ul class="nav nav-pills nav-pills-style-1 margin-top-40px lg-margin-top-30px md-margin-top-25px sm-margin-top-20px sm-justify-content" role="tablist">
+          <!-- description starts -->
+          <li class="nav-item">
+            <a class="nav-link text-black-ni active font-weight-600" data-toggle="pill" href="#desc">Mis Compras</a>
+          </li>
+          <!-- description ends -->
+          <!-- customer review starts -->
+          <li class="nav-item padding-left-10px sm-no-padding-left">
+            <a class="nav-link text-black font-weight-600" data-toggle="pill" href="#cust">Editar Perfil</a>
+          </li>
+          <!-- customer review ends -->
+          <!-- customer review starts -->
+          <li class="nav-item padding-left-10px sm-no-padding-left">
+            <a class="nav-link text-black font-weight-600" data-toggle="pill" href="#size-chart">Cambiar Contraseña</a>
+          </li>
+          <!-- customer review ends -->
+          <!-- customer review starts -->
+          <li class="nav-item padding-left-10px sm-no-padding-left">
+            <a class="nav-link text-black font-weight-600" data-toggle="pill" href="#top-review">Soporte</a>
+          </li>
+          <!-- customer review ends -->
+        </ul>
+      </div>
+      <div class="tab-content">
+        <!-- description section starts -->
+        <div class="margin-top-20px tab-pane active" id="desc">
+         <div class="container">
+            <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="account-settings">
+                  <div class="user-profile">
+                    <div class="user-avatar">
+                      <img src="assets/images/icon-img.png" alt="Comerzio.co">
+                    </div>
+                    <h5 class="user-name">{{ nombre }} {{ apellido }}</h5>
+                    <h6 class="user-email">Comprador</h6>
+                    <h6 class="user-online"><i class="fa fa-circle circle-background1"></i> En línea</h6>
+                  </div>
+                  <div class="about">
+                    <h5>Acerca de</h5>
+                    <p>{{ nombre }} {{ apellido }}, eres un {{ roles }} muy importante dentro de nuestra plataforma.</p>
+                    <p (click)="logout()" class="user-name hoverstyle1 "><i class="fas fa-power-off"></i> Cerrar Sesión</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+          <div class="card-body">
+            <div *ngIf="alerta" class="alert alert-primary" role="alert">
+              No tienes pedidos con nosotros, te invitamos a comprar!
+            </div>
+            <div *ngIf="tabla" class="container">
+              <table class="row-border hover table table-striped table-bordered hover">
+                <thead>
+                  <tr>
+                    <th>Numero Pedido</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                    <th>Fecha de Compra</th>
+                    <th>Información</th>
+                    <th>Calificación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor = "let user of pedidos ">
+                    <td>{{ user.idorder }}</td>
+                    <td>{{ user.ValorTotal | currency }}</td>
+                    <td><p
+                      [ngClass]="user.badgePedido ? 'badge badge-success' : 'badge badge-warning'
+                    ">{{ user.estadoEnvio }}</p></td>
+                    <td>{{  user.fecha | date  }}</td>
+                    <td>
+                      <div class="checkout_btn_inner d-flex align-items-center">
+                        <button (click)="viewpedido(user.idorder)" class="btn btn-outline-primary ml-2"><i class="fa fa-info pr-2"></i>Mas Información</button>
+                    </div>
+                    </td>
+                    <td>
+                      <button *ngIf="user.showcomentario" type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalComentario">
+                        Califica
+                      </button>
+                      <!-- Modal -->
+                      <!-- quick view starts -->
+                        <div class="row">
+                          <div class="col-lg-12 quick-view">
+                            <div class="modal popup-bg" id="ModalComentario">
+                              <div  class="modal-dialog1">
+                                <div class="modal-content  scrollCat">
+                                  <div class="modal-header">
+                                    <h3 class="font-weight-800 main-font text-transform md-title-medium lg-title-medium sm-title-mdmore">Califica tu Producto</h3>
+                                    <button type="button" class="close outline-none" data-dismiss="modal">
+                                    <i class="fas fa-times-circle"></i>
+                                    </button>
+                                  </div>
+                                  <div class=" customer-top-review  margin-eight-top margin-bottom-10px margin-eighteen-left margin-eighteen-right" aria-labelledby="review-top-tab">
+                                    <form [formGroup]="registerForm" (ngSubmit)="crearcomentario(user.IdProducto)" class="theme-form">
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="media">
+                                                    <label><strong>Calificación</strong></label>
+                                                    <div class="media-body">
+                                                        <div class="rating">
+                                    <div class="rate float-left">
+
+                                        <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="false" (click)="somethingChanged(item)"></ngb-rating>
+                                        <pre>Calificación: <b>{{currentRate}}</b></pre>
+
+                                    </div>
+                                  </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <label for="review"><strong>Calificación</strong></label>
+                                                <textarea
+                                                formControlName="antpass"
+                                                class="form-control"
+                                                placeholder="Ingrese su comentario"
+                                                id="exampleFormControlTextarea1"
+                                                rows="6"></textarea>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <button class="btn btn-outline-primary" type="submit">Enviar Calificación</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                  <!-- Modal footer starts -->
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn-style1" data-dismiss="modal">Cerrar</button>
+                                  </div>
+                                  <!-- Modal footer ends -->
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- quick view ends -->
+                    </td>
+                  </tr>
+                </tbody>
+                </table>
+
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <!-- description section ends -->
+        <div class="margin-top-20px tab-pane" id="cust">
+          <div class="container">
+            <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="account-settings">
+                  <div class="user-profile">
+                    <div class="user-avatar">
+                      <img src="assets/images/icon-img.png" alt="Comerzio.co">
+                    </div>
+                    <h5 class="user-name">{{ nombre }} {{ apellido }}</h5>
+                    <h6 class="user-email">{{ roles }}</h6>
+                    <h6 class="user-online"><i class="fa fa-circle circle-background1"></i> En línea</h6>
+                  </div>
+                  <div class="about">
+                    <h5>Acerca de</h5>
+                    <p>{{ nombre }} {{ apellido }}, eres un {{ roles }} muy importante dentro de nuestra plataforma.</p>
+                    <p (click)="logout()" class="user-name hoverstyle1 "><i class="fas fa-power-off"></i> Cerrar Sesión</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <!-- <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Datos Personales</h6>
+                  </div>
+                  <form [formGroup]="userperfil" (ngSubmit)="actualizarperfil()" class="mx-auto">
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="fullName">Nombres</label>
+                      <input
+                      type="fname"
+                      class="form-control"
+                      id="nombreperfil"
+                      value="{{ nombre }}"
+                      formControlName="nombreperfil">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="fullName">Apellidos</label>
+                      <input
+                      type="lname"
+                      class="form-control"
+                      id="apellidoperfil"
+                      value="{{ apellido }}"
+                      formControlName="apellidoperfil">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="eMail">Correo</label>
+                      <input
+                      type="email"
+                      class="form-control"
+                      id="correoperfil"
+                      value="{{ correo }}"
+                      formControlName="correoperfil">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="phone">Identificación</label>
+                      <input
+                      type="number"
+                      class="form-control"
+                      id="dniperfil"
+                      value="{{ cedula }}"
+                      formControlName="dniperfil">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="phone">Telefono</label>
+                      <input
+                      type="number"
+                      class="form-control"
+                      id="telefonoperfil"
+                      value="{{ telefono }}"
+                      formControlName="telefonoperfil">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="Street">Dirección</label>
+                      <input
+                      type="name"
+                      class="form-control"
+                      id="direccionperfil"
+                      value="{{ direccionusuario }}"
+                      formControlName="direccionperfil">
+                    </div>
+                  </div>
+                  <div class="d-inline-block">
+                    <div class="">
+                      <button type="submit" class="btn btn-outline-primary ml-2"><i class="fa fa-cog pr-2"></i>Actualizar</button>
+                    </div>
+                  </div>
+                </form>
+                </div> -->
+
+                <form [formGroup]="userperfil" (ngSubmit)="actualizarperfil()">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nombres</label>
+                    <div class="col-sm-10">
+                      <input  type="fname"
+                      class="form-control"
+                      id="nombreperfil"
+                      value="{{ nombre }}"
+                      formControlName="nombreperfil"
+                      disabled>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Apellidos</label>
+                    <div class="col-sm-10">
+                      <input type="lname"
+                      class="form-control"
+                      id="apellidoperfil"
+                      value="{{ apellido }}"
+                      formControlName="apellidoperfil"
+                      disabled>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Correo</label>
+                    <div class="col-sm-10">
+                      <input
+                      type="email"
+                      class="form-control"
+                      id="correoperfil"
+                      value="{{ correo }}"
+                      formControlName="correoperfil">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Identificación</label>
+                    <div class="col-sm-10">
+                      <input
+                      type="number"
+                      class="form-control"
+                      id="dniperfil"
+                      value="{{ cedula }}"
+                      formControlName="dniperfil">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Telefono</label>
+                    <div class="col-sm-10">
+                      <input
+                      type="number"
+                      class="form-control"
+                      id="telefonoperfil"
+                      value="{{ telefono }}"
+                      formControlName="telefonoperfil">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Dirección</label>
+                    <div class="col-sm-10">
+                      <input
+                      type="address"
+                      class="form-control"
+                      id="direccionperfil"
+                      value="{{ direccionusuario }}"
+                      formControlName="direccionperfil">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-outline-primary ml-2">Actualizar</button>
+                    </div>
+                  </div>
+                </form>
+
+                <!-- <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <div class="d-inline-block">
+                        <div class="">
+                          <button  class="btn btn-outline-danger ml-2"><i class="fa fa-ban pr-2"></i>Cancelar</button>
+                        </div>
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="">
+                          <button type="submit" class="btn btn-outline-primary ml-2"><i class="fa fa-cog pr-2"></i>Actualizar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class="margin-top-20px tab-pane" id="size-chart">
+          <div class="container">
+            <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="account-settings">
+                  <div class="user-profile">
+                    <div class="user-avatar">
+                      <img src="assets/images/icon-img.png" alt="Comerzio.co">
+                    </div>
+                    <h5 class="user-name">{{ nombre }} {{ apellido }}</h5>
+                    <h6 class="user-email">{{ roles }}</h6>
+                    <h6 class="user-online"><i class="fa fa-circle circle-background1"></i> En línea</h6>
+                  </div>
+                  <div class="about">
+                    <h5>Acerca de</h5>
+                    <p>{{ nombre }} {{ apellido }}, eres un {{ roles }} muy importante dentro de nuestra plataforma.</p>
+                    <p (click)="logout()" class="user-name hoverstyle1 "><i class="fas fa-power-off"></i> Cerrar Sesión</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 padding-bottom-30px">
+                  <h6 class="mb-2 text-primary">Cambiar Contraseña</h6>
+                </div>
+                <!-- <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-primary">Cambio de Contraseña</h6>
+                  </div> -->
+
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-12 col-md-8 offset-md-2">
+                        <div class="">
+                          <div class="">
+                            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-auto">
+
+                              <div class="form-group">
+                                <label>Contraseña Actual</label>
+                                <div class="input-group">
+                                  <!-- Change input type to be able to accept dynamic data -->
+                                  <input
+                                    [type]="fieldTextTypeAnt ? 'text' : 'password'"
+                                    class="form-control"
+                                    formControlName="antpass"
+                                  />
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i
+                                        class="fa"
+                                        [ngClass]="{
+                                          'fa-eye-slash': !fieldTextTypeAnt,
+                                          'fa-eye': fieldTextTypeAnt
+                                        }"
+                                        (click)="toggleFieldTextTypeAnt()"
+                                      ></i>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label>Contraseña Nueva</label>
+                                <div class="input-group">
+                                  <!-- Change input type to be able to accept dynamic data -->
+
+                                  <input
+                                    [type]="fieldTextType ? 'text' : 'password'"
+                                    class="form-control"
+                                    formControlName="password"
+                                  />
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i
+                                        class="fa"
+                                        [ngClass]="{
+                                          'fa-eye-slash': !fieldTextType,
+                                          'fa-eye': fieldTextType
+                                        }"
+                                        (click)="toggleFieldTextType()"
+                                      ></i>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div *ngIf="submitted && registerForm.get('password').errors" class="alert alert-danger">
+                                  <div *ngIf="registerForm.get('password').errors.required">Se requiere contraseña</div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <label> Confirmar Contraseña Nueva</label>
+                                <div class="input-group">
+                                  <!-- Change input type to be able to accept dynamic data -->
+                                  <input
+                                    [type]="repeatFieldTextType ? 'text' : 'password'"
+                                    class="form-control"
+                                    formControlName="confirmPassword"
+                                  />
+                                  <div class="input-group-append">
+                                    <span class="input-group-text">
+                                      <i
+                                        class="fa"
+                                        [ngClass]="{
+                                          'fa-eye-slash': !repeatFieldTextType,
+                                          'fa-eye': repeatFieldTextType
+                                        }"
+                                        (click)="toggleRepeatFieldTextType()"
+                                      ></i>
+                                    </span>
+                                  </div>
+                                </div>
+                                <div *ngIf="submitted && registerForm.get('confirmPassword').errors" class="alert alert-danger">
+                                  <div *ngIf="registerForm.get('confirmPassword').errors.required">Se requiere confirmación de contraseña</div>
+
+                                  <div *ngIf="registerForm.get('confirmPassword').errors.confirmPasswordValidator">Las contraseñas no coinciden.</div>
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-outline-primary btn-block">
+                                Cambiar Contraseña
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                <!-- <div class="row gutters">
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-right">
+                      <div class="d-inline-block">
+                        <div class="">
+                          <button  class="btn btn-outline-danger ml-2"><i class="fa fa-ban pr-2"></i>Cancelar</button>
+                        </div>
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="">
+                          <button class="btn btn-outline-primary ml-2"><i class="fa fa-cog pr-2"></i>Actualizar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+          <div class="tab-pane fade customer-top-review" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+
+            <div class="container">
+              <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <div class="account-settings">
+                      <div class="user-profile">
+                        <div class="user-avatar">
+                          <img src="assets/images/icon-img.png" alt="Comerzio.co">
+                        </div>
+                        <h5 class="user-name">{{ nombre }} {{ apellido }}</h5>
+                        <h6 class="user-email">{{ roles }}</h6>
+                        <h6 class="user-online"><i class="fa fa-circle circle-background1"></i> En línea</h6>
+                      </div>
+                      <div class="about">
+                        <h5>Acerca de</h5>
+                        <p>{{ nombre }} {{ apellido }}, eres un {{ roles }} muy importante dentro de nuestra plataforma.</p>
+                        <p (click)="logout()" class="user-name hoverstyle1 "><i class="fas fa-power-off"></i> Cerrar Sesión</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <!-- form starts -->
+							<div class="row">
+								<div class="col-xl-6 col-md-6 col-12 margin-bottom-10px">
+									<label for="exampleInputName" class="text-black">Nombre</label>
+									<input
+                  class="form-control border-radius-5"
+                  id="exampleInputName"
+                  type="text"
+                  name="name"
+                  value="{{ nombre }}"
+                  placeholder="Su nombre"
+                  disabled>
+								</div>
+								<div class="col-xl-6 col-md-6 col-12 margin-bottom-10px">
+									<label for="exampleInputLname" class="text-black">Apellido</label>
+									<input
+                  class="form-control border-radius-5"
+                  id="exampleInputLname"
+                  type="text"
+                  name="name"
+                  value="{{ apellido }}"
+                  placeholder="Su apellido"
+                  disabled>
+								</div>
+								<div class="col-xl-6 col-md-6 col-12 margin-bottom-10px">
+									<label for="exampleInputEmail1" class="text-black">Correo Electronico</label>
+									<input
+                  class="form-control border-radius-5"
+                  type="email"
+                  id="exampleInputEmail1"
+                  name="name"
+                  value="{{ correo }}"
+                  placeholder="Su dirección de correo electrónico"
+                  disabled>
+								</div>
+								<div class="col-xl-6 col-md-6 col-12 margin-bottom-15px">
+									<label for="exampleInputPhone" class="text-black">Telefono</label>
+									<input
+                  class="form-control border-radius-5"
+                  id="exampleInputPhone"
+                  type="tel"
+                  name="name"
+                  value="{{ telefono }}"
+                  placeholder="Su numero de contacto"
+                  disabled>
+								</div>
+                <form [formGroup]="quejas" (ngSubmit)="enviarqueja()">
+								<div class="col-xl-12 col-md-12 commentstyle-1 margin-bottom-15px">
+									<input
+                  class="comment border-radius-5 form-control"
+                  name="description"
+                  placeholder="Motivo del contacto"
+                  formControlName="reclamo">
+								</div>
+								<div class="col-xl-12 col-md-12 margin-bottom-15px">
+									<div class="text-left">
+										<button type="submit" class="btn btn-outline-primary btn-block">
+                      Enviar
+                    </button>
+									</div>
+								</div>
+              </form>
+							</div>
+							<!-- form ends -->
+							<div class="border-bottom-medium-dark margin-bottom-10px"></div>
+							<div class="row">
+								<div class="col-xl-12 col-lg-12 col-md-12">
+									<!-- contact info starts -->
+									<div class="contact-info">
+										<h5 class="font-weight-600 text-sky-blue text-large sm-text-extra-large">Contacto - Soporte</h5>
+										<p class="margin-bottom-10px sm-text-large sm-margin-bottom-10px">Ingresa de manera correcta todos tus datos en el formulario que se encuentra a continuación, serán procesados de manera privada y segura para ser analizados por nuestro equipo encargado, quienes posteriormente te contactarán.</p>
+									</div>
+									<!-- contact info ends -->
+									<div class="row">
+										<div class="col-md-12">
+											<div class="border-bottom-medium-dark margin-bottom-10px"></div>
+											<h5 class="font-weight-600 margin-bottom-10px text-large sm-text-extra-large">Medios De Contacto</h5>
+										</div>
+										<!-- email starts -->
+										<div class="col-xl-4 col-lg-4 col-md-12 border-right-medium-dark md-border-right-0px">
+											<div class="contact-icon">
+												<i class="far fa-envelope text-sky-blue vertical-align-middle text-extra-large"></i>
+											</div>
+											<div class="address">
+												<a href="mailto:soporte@comerzio.co" class="text-black hoverstyle1 sm-text-large">soporte@comerzio.co</a>
+											</div>
+										</div>
+										<!-- email ends -->
+										<!-- phone starts -->
+										<div class="col-xl-4 col-lg-3 col-md-12 border-right-medium-dark md-border-right-0px">
+											<div class="contact-icon">
+												<i class="fas fa-phone-volume text-sky-blue text-extra-large"></i>
+											</div>
+											<div class="address">
+												<a href="https://wa.link/g9y03x" class="text-black hoverstyle1 sm-text-large">+57 3155555600</a>
+											</div>
+										</div>
+										<!-- phone ends -->
+										<!-- location starts -->
+										<div class="col-xl-4 col-lg-5 col-md-12">
+											<div class="contact-icon">
+												<i class="fas fa-map-marker-alt text-sky-blue text-extra-large"></i>
+											</div>
+											<div class="address sm-text-large">Bogota, Colombia</div>
+										</div>
+										<!-- location starts -->
+									</div>
+								</div>
+							</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="padding-bottom-80px lg-padding-top-40px md-padding-top-30px sm-display-none">
+  <!-- related products starts -->

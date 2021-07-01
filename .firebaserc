@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lamejorferia-32065"
+  },
+  "targets": {
+    "lamejorferia-32065": {
+      "hosting": {
+        "ComerZio": [
+          "lamejorferia-32065"
+        ]
+      }
+    }
+  }
+}
